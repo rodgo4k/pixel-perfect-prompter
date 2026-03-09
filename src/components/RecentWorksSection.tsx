@@ -1,19 +1,9 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import mangaCover1 from "@/assets/manga-cover-1.jpg";
-import mangaCover2 from "@/assets/manga-cover-2.jpg";
-import mangaCover3 from "@/assets/manga-cover-3.jpg";
-import mangaCover4 from "@/assets/manga-cover-4.jpg";
-import mangaCover5 from "@/assets/manga-cover-5.jpg";
-import mangaCover6 from "@/assets/manga-cover-6.jpg";
+import { Link } from "react-router-dom";
+import { mangas } from "@/data/mangas";
 
-const recentWorks = [
-  { cover: mangaCover1, title: "Height Difference" },
-  { cover: mangaCover2, title: "Night Flower" },
-  { cover: mangaCover4, title: "The Bloody Merchant Empress" },
-  { cover: mangaCover3, title: "Assassin no Kyuujitsu" },
-  { cover: mangaCover5, title: "Touhou - Mamizou-san" },
-  { cover: mangaCover6, title: "Yokai Tales" },
-];
+const recentSlugs = ["height-difference", "night-flower", "the-bloody-merchant-empress", "assassin-no-kyuujitsu", "touhou-mamizou-san", "yokai-tales"];
+const recentWorks = recentSlugs.map((s) => mangas.find((m) => m.slug === s)!);
 
 const RecentWorksSection = () => {
   return (
@@ -30,8 +20,8 @@ const RecentWorksSection = () => {
         </div>
       </div>
       <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-2">
-        {recentWorks.map((work, i) => (
-          <div key={i} className="flex-shrink-0 w-40 cursor-pointer group">
+        {recentWorks.map((work) => (
+          <Link key={work.slug} to={`/manga/${work.slug}`} className="flex-shrink-0 w-40 group">
             <div className="overflow-hidden rounded-lg">
               <img
                 src={work.cover}
@@ -39,7 +29,10 @@ const RecentWorksSection = () => {
                 className="w-40 h-56 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
               />
             </div>
-          </div>
+            <p className="text-sm font-medium text-foreground mt-2 truncate group-hover:text-primary transition-colors">
+              {work.title}
+            </p>
+          </Link>
         ))}
       </div>
     </div>

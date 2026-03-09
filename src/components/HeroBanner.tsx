@@ -1,29 +1,10 @@
 import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import vagabondCover from "@/assets/vagabond-cover.jpg";
-import mangaCover1 from "@/assets/manga-cover-1.jpg";
-import mangaCover2 from "@/assets/manga-cover-2.jpg";
+import { Link } from "react-router-dom";
+import { mangas } from "@/data/mangas";
 
-const featuredMangas = [
-  {
-    title: "Vagabond",
-    cover: vagabondCover,
-    description:
-      "Aos dezessete anos de idade, Miyamoto Musashi – ainda conhecido por seu nome de infância, Shinmen Takezo – era um jovem bruto selvagem iniciando o caminho da espada. No rescaldo da épica Batalha de Sekigahara, Takezo se vê como um sobrevivente fugitivo do lado perdedor da guerra. A natureza cruel de Takezo fez dele um pária, mesmo em sua própria aldeia, e ele é caçado como um animal. Nesta encruzilhada crucial na vida de Takezo, um monge excêntrico e um amigo de infância são os únicos que podem ajudá-lo a encontrar seu caminho.",
-  },
-  {
-    title: "Flor da Noite",
-    cover: mangaCover1,
-    description:
-      "Em um Japão feudal mergulhado em conflitos, uma jovem guerreira busca vingança pela destruição de sua aldeia. Com habilidades únicas herdadas de seu mestre, ela percorre caminhos sombrios enfrentando inimigos poderosos enquanto descobre segredos sobre seu próprio passado e o verdadeiro significado da honra.",
-  },
-  {
-    title: "Reino Sombrio",
-    cover: mangaCover2,
-    description:
-      "Nas profundezas de um reino esquecido, criaturas ancestrais despertam após séculos de sono. Um grupo improvável de heróis — um espadachim cego, uma feiticeira exilada e um ladrão com coração de ouro — deve unir forças para impedir que a escuridão consuma o mundo dos vivos.",
-  },
-];
+const featuredSlugs = ["vagabond", "night-flower", "reino-sombrio"];
+const featuredMangas = featuredSlugs.map((s) => mangas.find((m) => m.slug === s)!);
 
 const HeroBanner = () => {
   const [current, setCurrent] = useState(0);
@@ -55,7 +36,8 @@ const HeroBanner = () => {
 
   return (
     <div className="relative bg-surface-dark overflow-hidden">
-      <div
+      <Link
+        to={`/manga/${manga.slug}`}
         className={`flex items-start gap-6 p-6 max-w-6xl mx-auto transition-opacity duration-300 ${
           isTransitioning ? "opacity-0" : "opacity-100"
         }`}
@@ -71,7 +53,7 @@ const HeroBanner = () => {
             {manga.description}
           </p>
         </div>
-      </div>
+      </Link>
       <div className="flex items-center justify-between px-6 pb-4 max-w-6xl mx-auto">
         <div className="flex gap-1.5">
           {featuredMangas.map((_, i) => (

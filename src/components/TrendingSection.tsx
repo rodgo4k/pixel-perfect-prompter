@@ -1,5 +1,8 @@
 import { ChevronUp, ChevronDown } from "lucide-react";
-import trendingManga from "@/assets/trending-manga.jpg";
+import { Link } from "react-router-dom";
+import { mangas } from "@/data/mangas";
+
+const trendingManga = mangas.find((m) => m.slug === "yokai-tales")!;
 
 const TrendingSection = () => {
   return (
@@ -15,13 +18,13 @@ const TrendingSection = () => {
           </button>
         </div>
       </div>
-      <div className="rounded-lg overflow-hidden">
+      <Link to={`/manga/${trendingManga.slug}`} className="block rounded-lg overflow-hidden group">
         <img
-          src={trendingManga}
+          src={trendingManga.cover}
           alt="Manga em alta"
-          className="w-full h-auto object-cover rounded-lg"
+          className="w-full h-auto object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
         />
-      </div>
+      </Link>
     </div>
   );
 };

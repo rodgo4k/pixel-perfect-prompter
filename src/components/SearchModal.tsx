@@ -1,29 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { Search, X } from "lucide-react";
-import mangaCover1 from "@/assets/manga-cover-1.jpg";
-import mangaCover2 from "@/assets/manga-cover-2.jpg";
-import mangaCover3 from "@/assets/manga-cover-3.jpg";
-import mangaCover4 from "@/assets/manga-cover-4.jpg";
-import mangaCover5 from "@/assets/manga-cover-5.jpg";
-import mangaCover6 from "@/assets/manga-cover-6.jpg";
-import vagabondCover from "@/assets/vagabond-cover.jpg";
-
-interface MangaEntry {
-  title: string;
-  cover: string;
-  chapters: number;
-  demographic: string;
-}
-
-const allMangas: MangaEntry[] = [
-  { title: "Vagabond", cover: vagabondCover, chapters: 327, demographic: "Seinen" },
-  { title: "Night Flower", cover: mangaCover1, chapters: 1, demographic: "Jousei" },
-  { title: "Reino Sombrio", cover: mangaCover2, chapters: 12, demographic: "Shounen" },
-  { title: "Assassin no Kyuujitsu", cover: mangaCover3, chapters: 3, demographic: "Jousei" },
-  { title: "The Bloody Merchant Empress", cover: mangaCover4, chapters: 11, demographic: "Jousei" },
-  { title: "Height Difference", cover: mangaCover5, chapters: 1, demographic: "Jousei" },
-  { title: "Touhou - Mamizou-san", cover: mangaCover6, chapters: 1, demographic: "Jousei" },
-];
+import { useNavigate } from "react-router-dom";
+import { mangas } from "@/data/mangas";
 
 interface SearchModalProps {
   open: boolean;
@@ -33,16 +11,25 @@ interface SearchModalProps {
 const SearchModal = ({ open, onClose }: SearchModalProps) => {
   const [query, setQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const navigate = useNavigate();
 
   const results = query.trim()
-    ? allMangas.filter((m) =>
-        m.title.toLowerCase().includes(query.toLowerCase())
-      )
-    : allMangas;
+    ? mangas.filter((m) => m.title.toLowerCase().includes(query.toLowerCase()))
+    : mangas;
 
   useEffect(() => {
     setSelectedIndex(0);
   }, [query]);
+
+  const goToManga = useCallback(
+    (index: number) => {
+      if (results[index]) {
+        onClose();
+        navigate(`/manga/${results[index].slug}`);
+      }
+    },
+    [results, onClose, navigate]
+  );
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
@@ -52,11 +39,14 @@ const SearchModal = ({ open, onClose }: SearchModalProps) => {
       } else if (e.key === "ArrowUp") {
         e.preventDefault();
         setSelectedIndex((i) => Math.max(i - 1, 0));
+      } else if (e.key === "Enter") {
+        e.preventDefault();
+        goToManga(selectedIndex);
       } else if (e.key === "Escape") {
         onClose();
       }
     },
-    [results.length, onClose]
+    [results.length, onClose, goToManga, selectedIndex]
   );
 
   useEffect(() => {
@@ -76,7 +66,6 @@ const SearchModal = ({ open, onClose }: SearchModalProps) => {
         onClick={(e) => e.stopPropagation()}
         onKeyDown={handleKeyDown}
       >
-        {/* Search input */}
         <div className="flex items-center gap-3 px-4 py-3 border-b border-border">
           <Search className="w-5 h-5 text-muted-foreground flex-shrink-0" />
           <input
@@ -96,7 +85,6 @@ const SearchModal = ({ open, onClose }: SearchModalProps) => {
           </kbd>
         </div>
 
-        {/* Results */}
         <div className="max-h-80 overflow-y-auto py-2">
           {results.length === 0 ? (
             <p className="px-4 py-8 text-center text-sm text-muted-foreground">
@@ -105,7 +93,8 @@ const SearchModal = ({ open, onClose }: SearchModalProps) => {
           ) : (
             results.map((manga, i) => (
               <button
-                key={manga.title}
+                key={manga.slug}
+                onClick={() => goToManga(i)}
                 className={`flex items-center gap-3 w-full px-4 py-2.5 text-left transition-colors ${
                   i === selectedIndex ? "bg-secondary" : "hover:bg-secondary/50"
                 }`}
@@ -119,7 +108,7 @@ const SearchModal = ({ open, onClose }: SearchModalProps) => {
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium text-foreground truncate">{manga.title}</p>
                   <p className="text-xs text-muted-foreground">
-                    {manga.chapters} cap. · {manga.demographic}
+                    {manga.chapters.length} cap. · {manga.demographic}
                   </p>
                 </div>
               </button>
@@ -127,7 +116,6 @@ const SearchModal = ({ open, onClose }: SearchModalProps) => {
           )}
         </div>
 
-        {/* Footer */}
         <div className="flex items-center gap-4 px-4 py-2.5 border-t border-border text-[11px] text-muted-foreground">
           <span className="flex items-center gap-1">
             <kbd className="px-1 py-0.5 bg-secondary rounded text-[10px]">↑↓</kbd> navegar
