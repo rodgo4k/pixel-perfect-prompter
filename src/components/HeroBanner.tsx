@@ -51,6 +51,8 @@ const HeroBanner = () => {
         <div className="absolute inset-0 bg-background/70" />
       </div>
 
+      <Header />
+
       <Link
         to={`/manga/${manga.slug}`}
         className={`relative flex items-start gap-6 p-6 max-w-6xl mx-auto transition-opacity duration-300 ${
