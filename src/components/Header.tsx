@@ -20,7 +20,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="flex items-center justify-between px-4 py-3 bg-surface-dark">
+      <header className="flex items-center justify-between px-4 py-3 bg-transparent">
         <div className="flex items-center gap-2">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-primary">
             <path d="M12 2L2 12l4 4 6-6 6 6 4-4L12 2z" fill="currentColor" />
