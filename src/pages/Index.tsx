@@ -1,11 +1,26 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Header from "@/components/Header";
+import HeroBanner from "@/components/HeroBanner";
+import ReleasesSection from "@/components/ReleasesSection";
+import TrendingSection from "@/components/TrendingSection";
+import RecentWorksSection from "@/components/RecentWorksSection";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="min-h-screen bg-background">
+      <Header />
+      <HeroBanner />
+      
+      <div className="max-w-6xl mx-auto px-6 py-8">
+        <div className="flex gap-8">
+          <ReleasesSection />
+          <div className="hidden lg:block">
+            <TrendingSection />
+          </div>
+        </div>
+        
+        <div className="mt-12">
+          <RecentWorksSection />
+        </div>
       </div>
     </div>
   );
