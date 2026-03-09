@@ -1,13 +1,7 @@
 import { Clock, Users } from "lucide-react";
 import { LayoutGrid, LayoutList } from "lucide-react";
-import mangaCover1 from "@/assets/manga-cover-1.jpg";
-import mangaCover2 from "@/assets/manga-cover-2.jpg";
-import mangaCover3 from "@/assets/manga-cover-3.jpg";
-import mangaCover4 from "@/assets/manga-cover-4.jpg";
-import mangaCover5 from "@/assets/manga-cover-5.jpg";
-import mangaCover6 from "@/assets/manga-cover-6.jpg";
-
-const covers = [mangaCover1, mangaCover2, mangaCover3, mangaCover4, mangaCover5, mangaCover6];
+import { Link } from "react-router-dom";
+import { mangas } from "@/data/mangas";
 
 interface Release {
   title: string;
@@ -15,32 +9,37 @@ interface Release {
   group: string;
   time: string;
   demographic: string;
-  coverIndex: number;
+  slug: string;
 }
 
 const releases: Release[] = [
-  { title: "Touhou - Mamizou-san no shippo wo...", chapter: "Capítulo 0", group: "Touhou Scans Brasil", time: "há 1 mês", demographic: "Ju", coverIndex: 0 },
-  { title: "Night Flower", chapter: "Capítulo 0", group: "Mai_Yes_Vintage_Manga", time: "há 1 mês", demographic: "Ju", coverIndex: 1 },
-  { title: "Height Difference", chapter: "Capítulo 0", group: "Manga Desu", time: "há 1 mês", demographic: "Ju", coverIndex: 4 },
-  { title: "Assassin no Kyuujitsu", chapter: "Capítulo 3 — Frango", group: "Double Scan", time: "há 1 mês", demographic: "Ju", coverIndex: 2 },
-  { title: "Assassin no Kyuujitsu", chapter: "Capítulo 2 — Cão", group: "Double Scan", time: "há 1 mês", demographic: "Ju", coverIndex: 2 },
-  { title: "Assassin no Kyuujitsu", chapter: "Capítulo 1 — Sorvete", group: "Double Scan", time: "há 1 mês", demographic: "Ju", coverIndex: 2 },
-  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 11 — Irmãs", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", coverIndex: 3 },
-  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 10 — Bullying", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", coverIndex: 3 },
-  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 9 — Zhu Yao", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", coverIndex: 3 },
-  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 8 — Tratamento", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", coverIndex: 3 },
-  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 7 — Pavilhão de Ling", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", coverIndex: 3 },
-  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 6 — O Assassino", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", coverIndex: 3 },
-  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 5", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", coverIndex: 3 },
-  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 4 — Paciência", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", coverIndex: 3 },
-  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 3 — Reunião", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", coverIndex: 3 },
-  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 2 — Renascimento", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", coverIndex: 3 },
+  { title: "Touhou - Mamizou-san no shippo wo...", chapter: "Capítulo 0", group: "Touhou Scans Brasil", time: "há 1 mês", demographic: "Ju", slug: "touhou-mamizou-san" },
+  { title: "Night Flower", chapter: "Capítulo 0", group: "Mai_Yes_Vintage_Manga", time: "há 1 mês", demographic: "Ju", slug: "night-flower" },
+  { title: "Height Difference", chapter: "Capítulo 0", group: "Manga Desu", time: "há 1 mês", demographic: "Ju", slug: "height-difference" },
+  { title: "Assassin no Kyuujitsu", chapter: "Capítulo 3 — Frango", group: "Double Scan", time: "há 1 mês", demographic: "Ju", slug: "assassin-no-kyuujitsu" },
+  { title: "Assassin no Kyuujitsu", chapter: "Capítulo 2 — Cão", group: "Double Scan", time: "há 1 mês", demographic: "Ju", slug: "assassin-no-kyuujitsu" },
+  { title: "Assassin no Kyuujitsu", chapter: "Capítulo 1 — Sorvete", group: "Double Scan", time: "há 1 mês", demographic: "Ju", slug: "assassin-no-kyuujitsu" },
+  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 11 — Irmãs", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
+  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 10 — Bullying", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
+  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 9 — Zhu Yao", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
+  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 8 — Tratamento", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
+  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 7 — Pavilhão de Ling", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
+  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 6 — O Assassino", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
+  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 5", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
+  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 4 — Paciência", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
+  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 3 — Reunião", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
+  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 2 — Renascimento", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
 ];
 
+const getCover = (slug: string) => mangas.find((m) => m.slug === slug)?.cover || "";
+
 const ReleaseItem = ({ release }: { release: Release }) => (
-  <div className="flex items-center gap-3 py-2.5 px-3 hover:bg-secondary/50 rounded-lg transition-colors cursor-pointer">
+  <Link
+    to={`/manga/${release.slug}`}
+    className="flex items-center gap-3 py-2.5 px-3 hover:bg-secondary/50 rounded-lg transition-colors"
+  >
     <img
-      src={covers[release.coverIndex]}
+      src={getCover(release.slug)}
       alt={release.title}
       className="w-10 h-14 object-cover rounded flex-shrink-0"
     />
@@ -64,7 +63,7 @@ const ReleaseItem = ({ release }: { release: Release }) => (
         {release.demographic}
       </span>
     </div>
-  </div>
+  </Link>
 );
 
 const ReleasesSection = () => {
