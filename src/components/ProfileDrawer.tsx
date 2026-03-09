@@ -1,4 +1,5 @@
-import { X, MessageSquare, Palette, Moon, Globe } from "lucide-react";
+import { X, MessageSquare, Palette, Moon, Sun, Globe } from "lucide-react";
+import { useTheme } from "@/hooks/use-theme";
 
 interface ProfileDrawerProps {
   open: boolean;
@@ -6,6 +7,8 @@ interface ProfileDrawerProps {
 }
 
 const ProfileDrawer = ({ open, onClose }: ProfileDrawerProps) => {
+  const { theme, toggleTheme } = useTheme();
+
   if (!open) return null;
 
   return (
@@ -35,9 +38,21 @@ const ProfileDrawer = ({ open, onClose }: ProfileDrawerProps) => {
           <div className="flex items-center gap-3 w-full px-4 py-3 text-sm text-foreground">
             <Palette className="w-5 h-5 text-muted-foreground" />
             <span>Tema</span>
-            <button className="ml-auto flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary text-xs text-muted-foreground">
-              <Moon className="w-3.5 h-3.5" />
-              Escuro
+            <button
+              onClick={toggleTheme}
+              className="ml-auto flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary text-xs text-muted-foreground hover:bg-secondary/80 transition-colors"
+            >
+              {theme === "dark" ? (
+                <>
+                  <Moon className="w-3.5 h-3.5" />
+                  Escuro
+                </>
+              ) : (
+                <>
+                  <Sun className="w-3.5 h-3.5" />
+                  Claro
+                </>
+              )}
             </button>
           </div>
 
