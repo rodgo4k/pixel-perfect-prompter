@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { Search, Command, User } from "lucide-react";
 import SearchModal from "./SearchModal";
+import ProfileDrawer from "./ProfileDrawer";
 
 const Header = () => {
   const [searchOpen, setSearchOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -40,12 +42,13 @@ const Header = () => {
             <Command className="w-3.5 h-3.5" />
             <span className="text-xs">K</span>
           </button>
-          <button className="p-2 rounded-lg hover:bg-secondary transition-colors">
+          <button onClick={() => setProfileOpen(true)} className="p-2 rounded-lg hover:bg-secondary transition-colors">
             <User className="w-5 h-5 text-muted-foreground" />
           </button>
         </div>
       </header>
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
+      <ProfileDrawer open={profileOpen} onClose={() => setProfileOpen(false)} />
     </>
   );
 };
