@@ -36,9 +36,23 @@ const HeroBanner = () => {
 
   return (
     <div className="relative overflow-hidden">
+      {/* Background cover image with blur */}
+      <div
+        className={`absolute inset-0 transition-opacity duration-300 ${
+          isTransitioning ? "opacity-0" : "opacity-100"
+        }`}
+      >
+        <img
+          src={manga.cover}
+          alt=""
+          className="w-full h-full object-cover scale-110 blur-xl"
+        />
+        <div className="absolute inset-0 bg-background/70" />
+      </div>
+
       <Link
         to={`/manga/${manga.slug}`}
-        className={`flex items-start gap-6 p-6 max-w-6xl mx-auto transition-opacity duration-300 ${
+        className={`relative flex items-start gap-6 p-6 max-w-6xl mx-auto transition-opacity duration-300 ${
           isTransitioning ? "opacity-0" : "opacity-100"
         }`}
       >
