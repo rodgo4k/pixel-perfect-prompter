@@ -35,7 +35,7 @@ const HeroBanner = () => {
   const manga = featuredMangas[current];
 
   return (
-    <div className="relative bg-surface-dark overflow-hidden">
+    <div className="relative overflow-hidden">
       <Link
         to={`/manga/${manga.slug}`}
         className={`flex items-start gap-6 p-6 max-w-6xl mx-auto transition-opacity duration-300 ${
