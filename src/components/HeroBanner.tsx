@@ -68,7 +68,7 @@ const HeroBanner = () => {
           </p>
         </div>
       </Link>
-      <div className="flex items-center justify-between px-6 pb-4 max-w-6xl mx-auto">
+      <div className="relative flex items-center justify-between px-6 pb-4 max-w-6xl mx-auto">
         <div className="flex gap-1.5">
           {featuredMangas.map((_, i) => (
             <button
