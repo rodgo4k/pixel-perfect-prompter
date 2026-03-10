@@ -3,6 +3,7 @@ import HeroBanner from "@/components/HeroBanner";
 import ReleasesSection from "@/components/ReleasesSection";
 import TrendingSection from "@/components/TrendingSection";
 import RecentWorksSection from "@/components/RecentWorksSection";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
@@ -21,6 +22,8 @@ const Index = () => {
           <RecentWorksSection />
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };
