@@ -10,6 +10,8 @@ interface ProfileDrawerProps {
 
 const ProfileDrawer = ({ open, onClose }: ProfileDrawerProps) => {
   const { theme, toggleTheme } = useTheme();
+  const { user, isAdmin, signOut } = useAuth();
+  const navigate = useNavigate();
 
   if (!open) return null;
 
