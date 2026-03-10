@@ -7,14 +7,18 @@ import Header from "./Header";
 const featuredSlugs = ["vagabond", "night-flower", "reino-sombrio"];
 const featuredMangas = featuredSlugs.map((s) => mangas.find((m) => m.slug === s)!);
 
+const MOBILE_CHAR_LIMIT = 80;
+
 const HeroBanner = () => {
   const [current, setCurrent] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const goTo = useCallback(
     (index: number) => {
       if (isTransitioning) return;
       setIsTransitioning(true);
+      setExpanded(false);
       setTimeout(() => {
         setCurrent(index);
         setTimeout(() => setIsTransitioning(false), 300);
@@ -34,6 +38,10 @@ const HeroBanner = () => {
   }, [current, goTo]);
 
   const manga = featuredMangas[current];
+  const needsTruncation = manga.description.length > MOBILE_CHAR_LIMIT;
+  const truncatedDesc = needsTruncation
+    ? manga.description.slice(0, MOBILE_CHAR_LIMIT).trimEnd() + "…"
+    : manga.description;
 
   return (
     <div className="relative overflow-hidden">
@@ -56,28 +64,50 @@ const HeroBanner = () => {
 
       <Header />
 
-      <Link
-        to={`/manga/${manga.slug}`}
-        className={`relative flex items-start gap-6 p-6 max-w-6xl mx-auto transition-opacity duration-300 ${
+      <div
+        className={`relative flex items-start gap-4 sm:gap-6 p-4 sm:p-6 max-w-6xl mx-auto transition-opacity duration-300 ${
           isTransitioning ? "opacity-0" : "opacity-100"
         }`}
       >
-        <img
-          src={manga.cover}
-          alt={manga.title}
-          width={144}
-          height={208}
-          fetchPriority="high"
-          className="w-36 h-52 object-cover rounded-lg shadow-lg flex-shrink-0"
-        />
-        <div className="flex-1 min-w-0 pt-2">
-          <h1 className="text-3xl font-extrabold text-foreground mb-3">{manga.title}</h1>
-          <p className="text-sm leading-relaxed text-secondary-foreground opacity-80">
+        <Link to={`/manga/${manga.slug}`} className="flex-shrink-0">
+          <img
+            src={manga.cover}
+            alt={manga.title}
+            width={144}
+            height={208}
+            fetchPriority="high"
+            className="w-28 sm:w-36 h-40 sm:h-52 object-cover rounded-lg shadow-lg"
+          />
+        </Link>
+        <div className="flex-1 min-w-0 pt-1 sm:pt-2">
+          <Link to={`/manga/${manga.slug}`}>
+            <h1 className="text-xl sm:text-3xl font-extrabold text-foreground mb-2 sm:mb-3 hover:text-primary transition-colors">
+              {manga.title}
+            </h1>
+          </Link>
+
+          {/* Desktop: full text always visible */}
+          <p className="hidden sm:block text-sm leading-relaxed text-secondary-foreground opacity-80">
             {manga.description}
           </p>
+
+          {/* Mobile: truncated with "ver mais" */}
+          <div className="sm:hidden">
+            <p className="text-xs leading-relaxed text-secondary-foreground opacity-80">
+              {expanded ? manga.description : truncatedDesc}
+            </p>
+            {needsTruncation && (
+              <button
+                onClick={() => setExpanded((v) => !v)}
+                className="text-xs font-semibold text-primary mt-1 hover:text-primary/80 transition-colors"
+              >
+                {expanded ? "ver menos" : "ver mais"}
+              </button>
+            )}
+          </div>
         </div>
-      </Link>
-      <div className="relative flex items-center justify-between px-6 pb-4 max-w-6xl mx-auto">
+      </div>
+      <div className="relative flex items-center justify-between px-4 sm:px-6 pb-4 max-w-6xl mx-auto">
         <div className="flex gap-1.5">
           {featuredMangas.map((_, i) => (
             <button
