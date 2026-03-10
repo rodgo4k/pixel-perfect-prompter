@@ -49,6 +49,9 @@ const TrendingSection = () => {
         <img
           src={manga.cover}
           alt={manga.title}
+          width={288}
+          height={394}
+          loading="lazy"
           className="w-full h-auto object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
         />
         <p className="text-sm font-medium text-foreground mt-2 group-hover:text-primary transition-colors">

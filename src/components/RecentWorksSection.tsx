@@ -26,6 +26,9 @@ const RecentWorksSection = () => {
               <img
                 src={work.cover}
                 alt={work.title}
+                width={160}
+                height={224}
+                loading="lazy"
                 className="w-40 h-56 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
               />
             </div>
