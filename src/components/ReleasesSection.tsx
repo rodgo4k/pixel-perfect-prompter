@@ -41,6 +41,9 @@ const ReleaseItem = ({ release }: { release: Release }) => (
     <img
       src={getCover(release.slug)}
       alt={release.title}
+      width={40}
+      height={56}
+      loading="lazy"
       className="w-10 h-14 object-cover rounded flex-shrink-0"
     />
     <div className="flex-1 min-w-0">
