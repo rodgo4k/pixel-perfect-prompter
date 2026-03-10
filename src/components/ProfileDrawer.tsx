@@ -1,4 +1,6 @@
-import { X, MessageSquare, Palette, Moon, Sun, Globe } from "lucide-react";
+import { X, MessageSquare, Palette, Moon, Sun, Globe, LogIn, LogOut, Shield } from "lucide-react";
+import { useAuth } from "@/hooks/use-auth";
+import { useNavigate } from "react-router-dom";
 import { useTheme } from "@/hooks/use-theme";
 
 interface ProfileDrawerProps {
@@ -8,6 +10,8 @@ interface ProfileDrawerProps {
 
 const ProfileDrawer = ({ open, onClose }: ProfileDrawerProps) => {
   const { theme, toggleTheme } = useTheme();
+  const { user, isAdmin, signOut } = useAuth();
+  const navigate = useNavigate();
 
   if (!open) return null;
 
@@ -64,10 +68,35 @@ const ProfileDrawer = ({ open, onClose }: ProfileDrawerProps) => {
             Discord
           </button>
 
-          {/* Login */}
-          <button className="w-full py-3 mt-2 rounded-lg bg-destructive text-destructive-foreground text-sm font-semibold hover:bg-destructive/90 transition-colors">
-            Login
-          </button>
+          {/* Admin */}
+          {isAdmin && (
+            <button
+              onClick={() => { navigate("/admin"); onClose(); }}
+              className="flex items-center justify-center gap-2 w-full py-3 mt-2 rounded-lg bg-secondary text-foreground text-sm font-semibold hover:bg-secondary/80 transition-colors"
+            >
+              <Shield className="w-4 h-4" />
+              Painel Admin
+            </button>
+          )}
+
+          {/* Login / Logout */}
+          {user ? (
+            <button
+              onClick={() => { signOut(); onClose(); }}
+              className="flex items-center justify-center gap-2 w-full py-3 mt-2 rounded-lg bg-destructive text-destructive-foreground text-sm font-semibold hover:bg-destructive/90 transition-colors"
+            >
+              <LogOut className="w-4 h-4" />
+              Sair
+            </button>
+          ) : (
+            <button
+              onClick={() => { navigate("/login"); onClose(); }}
+              className="flex items-center justify-center gap-2 w-full py-3 mt-2 rounded-lg bg-destructive text-destructive-foreground text-sm font-semibold hover:bg-destructive/90 transition-colors"
+            >
+              <LogIn className="w-4 h-4" />
+              Login
+            </button>
+          )}
         </div>
       </div>
     </div>
