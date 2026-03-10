@@ -1,4 +1,6 @@
-import { X, MessageSquare, Palette, Moon, Sun, Globe } from "lucide-react";
+import { X, MessageSquare, Palette, Moon, Sun, Globe, LogIn, LogOut, Shield } from "lucide-react";
+import { useAuth } from "@/hooks/use-auth";
+import { useNavigate } from "react-router-dom";
 import { useTheme } from "@/hooks/use-theme";
 
 interface ProfileDrawerProps {
