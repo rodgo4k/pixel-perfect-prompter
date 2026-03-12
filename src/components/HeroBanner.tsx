@@ -108,17 +108,7 @@ const HeroBanner = () => {
         </div>
       </div>
       <div className="relative flex items-center justify-between px-4 sm:px-6 pb-4 max-w-6xl mx-auto">
-        <div className="flex gap-1.5">
-          {featuredMangas.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => goTo(i)}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                i === current ? "w-5 bg-primary" : "w-1.5 bg-muted-foreground/40"
-              }`}
-            />
-          ))}
-        </div>
+        <div />
         <div className="flex gap-2">
           <button onClick={prev} className="text-primary hover:text-primary/80 transition-colors">
             <ChevronLeft className="w-6 h-6" />

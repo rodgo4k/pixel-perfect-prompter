@@ -58,17 +58,6 @@ const TrendingSection = () => {
           {manga.title}
         </p>
       </Link>
-      <div className="flex justify-center gap-1.5 mt-3">
-        {trendingMangas.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => goTo(i)}
-            className={`h-1.5 rounded-full transition-all duration-300 ${
-              i === current ? "w-5 bg-primary" : "w-1.5 bg-muted-foreground/40"
-            }`}
-          />
-        ))}
-      </div>
     </div>
   );
 };
