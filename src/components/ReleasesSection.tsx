@@ -29,6 +29,13 @@ const releases: Release[] = [
   { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 4 — Paciência", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
   { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 3 — Reunião", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
   { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 2 — Renascimento", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
+  { title: "Reino Sombrio", chapter: "Capítulo 12", group: "Kingdom Scans", time: "há 1 mês", demographic: "Sh", slug: "reino-sombrio" },
+  { title: "Reino Sombrio", chapter: "Capítulo 11", group: "Kingdom Scans", time: "há 1 mês", demographic: "Sh", slug: "reino-sombrio" },
+  { title: "Reino Sombrio", chapter: "Capítulo 10", group: "Kingdom Scans", time: "há 1 mês", demographic: "Sh", slug: "reino-sombrio" },
+  { title: "Reino Sombrio", chapter: "Capítulo 9", group: "Kingdom Scans", time: "há 1 mês", demographic: "Sh", slug: "reino-sombrio" },
+  { title: "Yokai Tales", chapter: "Capítulo 5 — Kitsune", group: "Yokai Scans", time: "há 2 semanas", demographic: "Sh", slug: "yokai-tales" },
+  { title: "Yokai Tales", chapter: "Capítulo 4 — Tanuki", group: "Yokai Scans", time: "há 3 semanas", demographic: "Sh", slug: "yokai-tales" },
+  { title: "Yokai Tales", chapter: "Capítulo 3 — Kappa", group: "Yokai Scans", time: "há 1 mês", demographic: "Sh", slug: "yokai-tales" },
 ];
 
 const getCover = (slug: string) => mangas.find((m) => m.slug === slug)?.cover || "";
@@ -83,7 +90,7 @@ const ReleasesSection = () => {
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
         {releases.map((release, i) => (
           <ReleaseItem key={i} release={release} />
         ))}
