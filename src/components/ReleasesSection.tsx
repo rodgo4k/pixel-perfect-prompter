@@ -90,7 +90,7 @@ const ReleasesSection = () => {
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
         {releases.map((release, i) => (
           <ReleaseItem key={i} release={release} />
         ))}
