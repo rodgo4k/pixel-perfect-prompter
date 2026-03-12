@@ -13,7 +13,7 @@ const Index = () => {
       <div className="max-w-6xl mx-auto px-6 py-8">
         <div className="flex gap-8">
           <ReleasesSection />
-          <div className="hidden lg:block">
+          <div className="hidden lg:block sticky top-4 self-start">
             <TrendingSection />
           </div>
         </div>
