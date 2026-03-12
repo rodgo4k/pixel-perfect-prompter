@@ -118,9 +118,6 @@ const HeroBanner = () => {
               }`}
             />
           ))}
-
-
-          )}
         </div>
         <div className="flex gap-2">
           <button onClick={prev} className="text-primary hover:text-primary/80 transition-colors">
