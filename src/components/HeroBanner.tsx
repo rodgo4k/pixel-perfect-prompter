@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { mangas } from "@/data/mangas";
-import Header from "./Header";
+
 
 const featuredSlugs = ["vagabond", "night-flower", "reino-sombrio"];
 const featuredMangas = featuredSlugs.map((s) => mangas.find((m) => m.slug === s)!);
@@ -62,7 +62,8 @@ const HeroBanner = () => {
         <div className="absolute inset-0 bg-background/70" />
       </div>
 
-      <Header />
+      {/* Spacer for fixed header */}
+      <div className="h-12" />
 
       <div
         className={`relative flex items-start gap-4 sm:gap-6 p-4 sm:p-6 max-w-6xl mx-auto transition-opacity duration-300 ${
