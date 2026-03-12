@@ -62,7 +62,8 @@ const HeroBanner = () => {
         <div className="absolute inset-0 bg-background/70" />
       </div>
 
-      <Header />
+      {/* Spacer for fixed header */}
+      <div className="h-12" />
 
       <div
         className={`relative flex items-start gap-4 sm:gap-6 p-4 sm:p-6 max-w-6xl mx-auto transition-opacity duration-300 ${
