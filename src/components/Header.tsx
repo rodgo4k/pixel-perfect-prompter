@@ -6,6 +6,7 @@ import ProfileDrawer from "./ProfileDrawer";
 const Header = () => {
   const [searchOpen, setSearchOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const [scrollOpacity, setScrollOpacity] = useState(0);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -18,9 +19,24 @@ const Header = () => {
     return () => window.removeEventListener("keydown", handler);
   }, []);
 
+  useEffect(() => {
+    const onScroll = () => {
+      const opacity = Math.min(window.scrollY / 120, 1);
+      setScrollOpacity(opacity);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <>
-      <header className="relative z-10 flex items-center justify-between px-4 py-3 bg-transparent">
+      <header
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-3 transition-shadow duration-300"
+        style={{
+          backgroundColor: `hsl(var(--background) / ${scrollOpacity})`,
+          boxShadow: scrollOpacity > 0.8 ? `0 1px 3px hsl(var(--foreground) / 0.05)` : "none",
+        }}
+      >
         <div className="flex items-center gap-2">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-primary">
             <path d="M12 2L2 12l4 4 6-6 6 6 4-4L12 2z" fill="currentColor" />
