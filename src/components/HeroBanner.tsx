@@ -66,9 +66,9 @@ const HeroBanner = () => {
       <div className="h-12" />
 
       <div
-        className={`relative flex items-start gap-4 sm:gap-6 p-4 sm:p-6 max-w-6xl mx-auto transition-opacity duration-300 ${
-        isTransitioning ? "opacity-0" : "opacity-100"}`
-        }>
+        className={`relative flex items-start gap-4 sm:gap-6 p-4 sm:p-6 mx-auto transition-opacity duration-300 ${
+        isTransitioning ? "opacity-0" : "opacity-100"}`}
+        style={{ maxWidth: 1237, minHeight: 410 }}>
         
         <Link to={`/manga/${manga.slug}`} className="flex-shrink-0">
           <img
