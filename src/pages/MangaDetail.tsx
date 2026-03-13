@@ -52,7 +52,7 @@ const MangaDetail = () => {
 
         <div className="h-12" />
 
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
+        <div className="relative mx-auto px-4 sm:px-6 py-6 sm:py-10" style={{ maxWidth: 1237, minHeight: 410 }}>
           <div className="flex flex-col sm:flex-row gap-5 sm:gap-8">
             {/* Cover */}
             <div className="relative flex-shrink-0 self-start">
