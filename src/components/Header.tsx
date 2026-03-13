@@ -21,7 +21,7 @@ const Header = () => {
 
   useEffect(() => {
     const onScroll = () => {
-      const opacity = Math.min(window.scrollY / 120, 1);
+      const opacity = Math.min(window.scrollY / 200, 1);
       setScrollOpacity(opacity);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
