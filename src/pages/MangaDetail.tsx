@@ -186,9 +186,8 @@ const MangaDetail = () => {
           {totalPages > 1 && (
             <div className="flex items-center justify-end gap-2 mt-6">
               <select
-                value={CHAPTERS_PER_PAGE}
+                defaultValue={CHAPTERS_PER_PAGE}
                 className="px-2 py-1 text-xs rounded border border-border bg-card text-foreground"
-                readOnly
               >
                 <option value={30}>30</option>
               </select>
