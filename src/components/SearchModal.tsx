@@ -62,7 +62,8 @@ const SearchModal = ({ open, onClose }: SearchModalProps) => {
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-[15vh]" onClick={onClose}>
       <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" />
       <div
-        className="relative w-full max-w-lg bg-card border border-border rounded-xl shadow-2xl overflow-hidden animate-scale-in"
+        className="relative bg-card border border-border rounded-xl shadow-2xl overflow-hidden animate-scale-in text-[19px]"
+        style={{ width: 766, maxHeight: 508 }}
         onClick={(e) => e.stopPropagation()}
         onKeyDown={handleKeyDown}
       >
