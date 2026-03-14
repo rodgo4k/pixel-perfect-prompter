@@ -16,16 +16,16 @@ const Footer = () => {
                 href="https://x.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border text-sm text-foreground hover:bg-secondary transition-colors"
-              >
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border text-sm text-foreground hover:bg-secondary transition-colors">
+                
                 <span className="font-bold">𝕏</span> Siga-nos no X
               </a>
               <a
                 href="https://discord.gg"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border text-sm text-foreground hover:bg-secondary transition-colors"
-              >
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border text-sm text-foreground hover:bg-secondary transition-colors">
+                
                 Discord
               </a>
             </div>
@@ -37,7 +37,7 @@ const Footer = () => {
               Sobre o Projeto
             </h3>
             <p className="text-sm leading-relaxed text-muted-foreground text-justify">
-              A Aura Mangás tem como missão oferecer o melhor acervo de mangás em português, com foco em obras de origem japonesa. Nosso compromisso é construir um ambiente interativo, rico e duradouro para fortalecer a comunidade e a cultura otaku no Brasil.
+              A Aura Mangás nasceu com o objetivo de disponibilizar uma grande coleção de mangás em português, priorizando principalmente obras de origem japonesa. Nosso propósito é criar uma plataforma completa, interativa e duradoura, onde fãs possam explorar histórias incríveis enquanto ajudamos a fortalecer a comunidade e a cultura otaku no Brasil.
             </p>
           </div>
         </div>
@@ -51,8 +51,8 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>);
+
 };
 
 export default Footer;
