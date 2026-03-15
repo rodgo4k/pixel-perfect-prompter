@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
-import { User } from "lucide-react";
+import { User, Send, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import ProfileDrawer from "./ProfileDrawer";
+import SearchModal from "./SearchModal";
 
 const Header = () => {
   const navigate = useNavigate();
   const [profileOpen, setProfileOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const [scrollOpacity, setScrollOpacity] = useState(0);
   const [animating, setAnimating] = useState(true);
 
@@ -45,13 +47,35 @@ const Header = () => {
             Alpha
           </span>
         </button>
+
+        {/* Search Bar */}
+        <button
+          onClick={() => setSearchOpen(true)}
+          className="hidden sm:flex items-center gap-2 flex-1 max-w-md mx-4 relative group"
+        >
+          <div className="absolute -inset-[2px] rounded-full bg-gradient-to-r from-primary/40 via-transparent to-transparent opacity-70 group-hover:opacity-100 transition-opacity blur-[1px]" />
+          <div className="relative flex items-center gap-2 w-full rounded-full border border-border/40 bg-card/80 backdrop-blur-sm px-4 py-2.5 shadow-lg">
+            <span className="text-sm text-muted-foreground flex-1 text-left">Ask me anything...</span>
+            <div className="relative flex-shrink-0">
+              <Send className="w-4 h-4 text-muted-foreground" />
+              <Sparkles className="w-2.5 h-2.5 text-primary absolute -top-1 -right-1.5" />
+            </div>
+          </div>
+        </button>
+
         <div className="flex items-center gap-2">
+          <button onClick={() => setSearchOpen(true)} className="sm:hidden p-2 rounded-lg hover:bg-secondary transition-colors">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-muted-foreground">
+              <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
+            </svg>
+          </button>
           <button onClick={() => setProfileOpen(true)} className="p-2 rounded-lg hover:bg-secondary transition-colors">
             <User className="w-5 h-5 text-muted-foreground" />
           </button>
         </div>
       </header>
       <ProfileDrawer open={profileOpen} onClose={() => setProfileOpen(false)} />
+      <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>);
 
 };
