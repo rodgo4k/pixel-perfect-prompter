@@ -53,7 +53,7 @@ const Header = () => {
           onClick={() => setSearchOpen(true)}
           className="hidden sm:flex items-center gap-2 flex-1 max-w-md mx-4 relative group"
         >
-          <div className="absolute -inset-[2px] rounded-full bg-gradient-to-r from-cyan-500/60 via-transparent to-transparent opacity-70 group-hover:opacity-100 transition-opacity blur-[1px]" />
+          <div className="absolute -inset-[2px] rounded-full bg-gradient-to-r from-primary/40 via-transparent to-transparent opacity-70 group-hover:opacity-100 transition-opacity blur-[1px]" />
           <div className="relative flex items-center gap-2 w-full rounded-full border border-border/40 bg-card/80 backdrop-blur-sm px-4 py-2.5 shadow-lg">
             <span className="text-sm text-muted-foreground flex-1 text-left">Ask me anything...</span>
             <div className="relative flex-shrink-0">
