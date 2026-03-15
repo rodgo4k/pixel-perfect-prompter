@@ -43,7 +43,7 @@ const getCover = (slug: string) => mangas.find((m) => m.slug === slug)?.cover ||
 const ReleaseItem = ({ release }: {release: Release;}) =>
 <Link
   to={`/manga/${release.slug}`}
-  className="flex items-center gap-3 py-2.5 rounded-lg transition-colors bg-neutral-950 my-[10px] mx-[10px] px-0">
+  className="flex items-center gap-3 rounded-lg transition-colors bg-neutral-950 my-[10px] mx-[10px] px-0 py-0">
   
     <img
     src={getCover(release.slug)}
