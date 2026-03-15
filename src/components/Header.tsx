@@ -69,7 +69,7 @@ const Header = () => {
               <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
             </svg>
           </button>
-          <button onClick={() => setProfileOpen(true)} className="p-2 rounded-lg hover:bg-secondary transition-colors">
+          <button onClick={() => setProfileOpen(true)} className="p-2 rounded-lg hover:bg-secondary transition-colors px-[5px] py-[5px]">
             <User className="text-muted-foreground h-[24px] w-[24px]" />
           </button>
         </div>
