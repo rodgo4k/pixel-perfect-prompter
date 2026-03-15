@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { User, Send } from "lucide-react";
+import { User, Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import ProfileDrawer from "./ProfileDrawer";
 import SearchModal from "./SearchModal";
@@ -57,7 +57,7 @@ const Header = () => {
           <div className="relative flex items-center w-full rounded-full border border-border/40 bg-card/80 backdrop-blur-sm py-2.5 shadow-lg px-[16px] gap-[8px]">
             <span className="text-sm text-muted-foreground flex-1 text-left">Pesquisar... </span>
             <div className="relative flex-shrink-0">
-              <Send className="w-4 h-4 text-muted-foreground" />
+              <Search className="text-muted-foreground w-[17px] h-[17px]" />
               
             </div>
           </div>
