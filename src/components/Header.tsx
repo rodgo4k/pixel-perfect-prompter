@@ -5,6 +5,7 @@ import SearchModal from "./SearchModal";
 import ProfileDrawer from "./ProfileDrawer";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [searchOpen, setSearchOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [scrollOpacity, setScrollOpacity] = useState(0);
