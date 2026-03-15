@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { User, Send, Sparkles } from "lucide-react";
+import { User, Send } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import ProfileDrawer from "./ProfileDrawer";
 import SearchModal from "./SearchModal";
@@ -56,10 +56,7 @@ const Header = () => {
           <div className="absolute -inset-[2px] rounded-full bg-gradient-to-r from-primary/40 via-transparent to-transparent opacity-70 group-hover:opacity-100 transition-opacity blur-[1px]" />
           <div className="relative flex items-center gap-2 w-full rounded-full border border-border/40 bg-card/80 backdrop-blur-sm px-4 py-2.5 shadow-lg">
             <span className="text-sm text-muted-foreground flex-1 text-left">Pesquise por mangás... </span>
-            <div className="relative flex-shrink-0">
-              <Send className="w-4 h-4 text-muted-foreground" />
-              <Sparkles className="w-2.5 h-2.5 text-primary absolute -top-1 -right-1.5" />
-            </div>
+            <Send className="w-4 h-4 text-muted-foreground flex-shrink-0" />
           </div>
         </button>
 
