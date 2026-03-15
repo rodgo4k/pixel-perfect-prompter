@@ -57,9 +57,6 @@ const Header = () => {
             Alpha
           </span>
         </button>
-            Alpha
-          </span>
-        </div>
         <div className="flex items-center gap-2">
           <button onClick={() => setSearchOpen(true)} className="p-2 rounded-lg hover:bg-secondary transition-colors">
             <Search className="w-5 h-5 text-muted-foreground" />
