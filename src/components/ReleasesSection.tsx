@@ -13,46 +13,46 @@ interface Release {
 }
 
 const releases: Release[] = [
-  { title: "Touhou - Mamizou-san no shippo wo...", chapter: "Capítulo 0", group: "Touhou Scans Brasil", time: "há 1 mês", demographic: "Ju", slug: "touhou-mamizou-san" },
-  { title: "Night Flower", chapter: "Capítulo 0", group: "Mai_Yes_Vintage_Manga", time: "há 1 mês", demographic: "Ju", slug: "night-flower" },
-  { title: "Height Difference", chapter: "Capítulo 0", group: "Manga Desu", time: "há 1 mês", demographic: "Ju", slug: "height-difference" },
-  { title: "Assassin no Kyuujitsu", chapter: "Capítulo 3 — Frango", group: "Double Scan", time: "há 1 mês", demographic: "Ju", slug: "assassin-no-kyuujitsu" },
-  { title: "Assassin no Kyuujitsu", chapter: "Capítulo 2 — Cão", group: "Double Scan", time: "há 1 mês", demographic: "Ju", slug: "assassin-no-kyuujitsu" },
-  { title: "Assassin no Kyuujitsu", chapter: "Capítulo 1 — Sorvete", group: "Double Scan", time: "há 1 mês", demographic: "Ju", slug: "assassin-no-kyuujitsu" },
-  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 11 — Irmãs", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
-  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 10 — Bullying", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
-  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 9 — Zhu Yao", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
-  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 8 — Tratamento", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
-  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 7 — Pavilhão de Ling", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
-  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 6 — O Assassino", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
-  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 5", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
-  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 4 — Paciência", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
-  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 3 — Reunião", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
-  { title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 2 — Renascimento", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
-  { title: "Reino Sombrio", chapter: "Capítulo 12", group: "Kingdom Scans", time: "há 1 mês", demographic: "Sh", slug: "reino-sombrio" },
-  { title: "Reino Sombrio", chapter: "Capítulo 11", group: "Kingdom Scans", time: "há 1 mês", demographic: "Sh", slug: "reino-sombrio" },
-  { title: "Reino Sombrio", chapter: "Capítulo 10", group: "Kingdom Scans", time: "há 1 mês", demographic: "Sh", slug: "reino-sombrio" },
-  { title: "Reino Sombrio", chapter: "Capítulo 9", group: "Kingdom Scans", time: "há 1 mês", demographic: "Sh", slug: "reino-sombrio" },
-  { title: "Yokai Tales", chapter: "Capítulo 5 — Kitsune", group: "Yokai Scans", time: "há 2 semanas", demographic: "Sh", slug: "yokai-tales" },
-  { title: "Yokai Tales", chapter: "Capítulo 4 — Tanuki", group: "Yokai Scans", time: "há 3 semanas", demographic: "Sh", slug: "yokai-tales" },
-  { title: "Yokai Tales", chapter: "Capítulo 3 — Kappa", group: "Yokai Scans", time: "há 1 mês", demographic: "Sh", slug: "yokai-tales" },
-];
+{ title: "Touhou - Mamizou-san no shippo wo...", chapter: "Capítulo 0", group: "Touhou Scans Brasil", time: "há 1 mês", demographic: "Ju", slug: "touhou-mamizou-san" },
+{ title: "Night Flower", chapter: "Capítulo 0", group: "Mai_Yes_Vintage_Manga", time: "há 1 mês", demographic: "Ju", slug: "night-flower" },
+{ title: "Height Difference", chapter: "Capítulo 0", group: "Manga Desu", time: "há 1 mês", demographic: "Ju", slug: "height-difference" },
+{ title: "Assassin no Kyuujitsu", chapter: "Capítulo 3 — Frango", group: "Double Scan", time: "há 1 mês", demographic: "Ju", slug: "assassin-no-kyuujitsu" },
+{ title: "Assassin no Kyuujitsu", chapter: "Capítulo 2 — Cão", group: "Double Scan", time: "há 1 mês", demographic: "Ju", slug: "assassin-no-kyuujitsu" },
+{ title: "Assassin no Kyuujitsu", chapter: "Capítulo 1 — Sorvete", group: "Double Scan", time: "há 1 mês", demographic: "Ju", slug: "assassin-no-kyuujitsu" },
+{ title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 11 — Irmãs", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
+{ title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 10 — Bullying", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
+{ title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 9 — Zhu Yao", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
+{ title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 8 — Tratamento", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
+{ title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 7 — Pavilhão de Ling", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
+{ title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 6 — O Assassino", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
+{ title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 5", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
+{ title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 4 — Paciência", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
+{ title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 3 — Reunião", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
+{ title: "The Bloody Merchant Empress and the Cold...", chapter: "Capítulo 2 — Renascimento", group: "Cervo Scanlator", time: "há 1 mês", demographic: "Ju", slug: "the-bloody-merchant-empress" },
+{ title: "Reino Sombrio", chapter: "Capítulo 12", group: "Kingdom Scans", time: "há 1 mês", demographic: "Sh", slug: "reino-sombrio" },
+{ title: "Reino Sombrio", chapter: "Capítulo 11", group: "Kingdom Scans", time: "há 1 mês", demographic: "Sh", slug: "reino-sombrio" },
+{ title: "Reino Sombrio", chapter: "Capítulo 10", group: "Kingdom Scans", time: "há 1 mês", demographic: "Sh", slug: "reino-sombrio" },
+{ title: "Reino Sombrio", chapter: "Capítulo 9", group: "Kingdom Scans", time: "há 1 mês", demographic: "Sh", slug: "reino-sombrio" },
+{ title: "Yokai Tales", chapter: "Capítulo 5 — Kitsune", group: "Yokai Scans", time: "há 2 semanas", demographic: "Sh", slug: "yokai-tales" },
+{ title: "Yokai Tales", chapter: "Capítulo 4 — Tanuki", group: "Yokai Scans", time: "há 3 semanas", demographic: "Sh", slug: "yokai-tales" },
+{ title: "Yokai Tales", chapter: "Capítulo 3 — Kappa", group: "Yokai Scans", time: "há 1 mês", demographic: "Sh", slug: "yokai-tales" }];
+
 
 const getCover = (slug: string) => mangas.find((m) => m.slug === slug)?.cover || "";
 
-const ReleaseItem = ({ release }: { release: Release }) => (
-  <Link
-    to={`/manga/${release.slug}`}
-    className="flex items-center gap-3 py-2.5 px-3 hover:bg-secondary/50 rounded-lg transition-colors"
-  >
+const ReleaseItem = ({ release }: {release: Release;}) =>
+<Link
+  to={`/manga/${release.slug}`}
+  className="flex items-center gap-3 py-2.5 px-3 rounded-lg transition-colors bg-neutral-950">
+  
     <img
-      src={getCover(release.slug)}
-      alt={release.title}
-      width={40}
-      height={56}
-      loading="lazy"
-      className="w-10 h-14 object-cover rounded flex-shrink-0"
-    />
+    src={getCover(release.slug)}
+    alt={release.title}
+    width={40}
+    height={56}
+    loading="lazy"
+    className="w-10 h-14 object-cover rounded flex-shrink-0" />
+  
     <div className="flex-1 min-w-0">
       <p className="text-sm font-medium text-foreground truncate">{release.title}</p>
       <p className="text-xs font-semibold text-primary">{release.chapter}</p>
@@ -73,8 +73,8 @@ const ReleaseItem = ({ release }: { release: Release }) => (
         {release.demographic}
       </span>
     </div>
-  </Link>
-);
+  </Link>;
+
 
 const ReleasesSection = () => {
   return (
@@ -91,12 +91,12 @@ const ReleasesSection = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
-        {releases.map((release, i) => (
-          <ReleaseItem key={i} release={release} />
-        ))}
+        {releases.map((release, i) =>
+        <ReleaseItem key={i} release={release} />
+        )}
       </div>
-    </div>
-  );
+    </div>);
+
 };
 
 export default ReleasesSection;
