@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { User, Send, Sparkles } from "lucide-react";
+import { User, Send } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import ProfileDrawer from "./ProfileDrawer";
 import SearchModal from "./SearchModal";
@@ -58,7 +58,7 @@ const Header = () => {
             <span className="text-sm text-muted-foreground flex-1 text-left">Pesquisar... </span>
             <div className="relative flex-shrink-0">
               <Send className="w-4 h-4 text-muted-foreground" />
-              <Sparkles className="w-2.5 h-2.5 text-primary absolute -top-1 -right-1.5" />
+              
             </div>
           </div>
         </button>
