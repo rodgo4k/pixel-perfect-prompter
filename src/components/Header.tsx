@@ -1,12 +1,10 @@
-import { useState, useEffect, useCallback } from "react";
-import { Search, Command, User } from "lucide-react";
+import { useState, useEffect } from "react";
+import { User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import SearchModal from "./SearchModal";
 import ProfileDrawer from "./ProfileDrawer";
 
 const Header = () => {
   const navigate = useNavigate();
-  const [searchOpen, setSearchOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [scrollOpacity, setScrollOpacity] = useState(0);
   const [animating, setAnimating] = useState(true);
@@ -17,17 +15,6 @@ const Header = () => {
       requestAnimationFrame(() => setAnimating(true));
     }, 10000);
     return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
-        e.preventDefault();
-        setSearchOpen((v) => !v);
-      }
-    };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
   }, []);
 
   useEffect(() => {
@@ -59,22 +46,11 @@ const Header = () => {
           </span>
         </button>
         <div className="flex items-center gap-2">
-          <button onClick={() => setSearchOpen(true)} className="p-2 rounded-lg hover:bg-secondary transition-colors">
-            <Search className="w-5 h-5 text-muted-foreground" />
-          </button>
-          <button
-            onClick={() => setSearchOpen(true)}
-            className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-secondary text-muted-foreground text-sm hover:bg-muted transition-colors">
-            
-            <Command className="w-3.5 h-3.5" />
-            <span className="text-xs">K</span>
-          </button>
           <button onClick={() => setProfileOpen(true)} className="p-2 rounded-lg hover:bg-secondary transition-colors">
             <User className="w-5 h-5 text-muted-foreground" />
           </button>
         </div>
       </header>
-      <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
       <ProfileDrawer open={profileOpen} onClose={() => setProfileOpen(false)} />
     </>);
 
