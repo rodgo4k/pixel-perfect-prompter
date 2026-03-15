@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Search, Command, User } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import SearchModal from "./SearchModal";
 import ProfileDrawer from "./ProfileDrawer";
 
