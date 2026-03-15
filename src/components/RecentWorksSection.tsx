@@ -71,7 +71,7 @@ const RecentWorksSection = () => {
               width={160}
               height={224}
               loading="lazy"
-              className="w-full aspect-[5/7] object-cover group-hover:scale-105 transition-transform duration-300 rounded-xl" />
+              className="w-full aspect-[5/7] object-cover group-hover:scale-105 transition-transform duration-300 rounded-lg" />
             
             </div>
             <p className="text-sm font-medium text-foreground mt-2 truncate group-hover:text-primary transition-colors">
