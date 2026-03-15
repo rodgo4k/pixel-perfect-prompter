@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { User, Search } from "lucide-react";
+import { Search, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import ProfileDrawer from "./ProfileDrawer";
 import SearchModal from "./SearchModal";
@@ -70,7 +70,7 @@ const Header = () => {
             </svg>
           </button>
           <button onClick={() => setProfileOpen(true)} className="p-2 rounded-lg hover:bg-secondary transition-colors">
-            <User className="w-5 h-5 text-muted-foreground" />
+            <User className="text-muted-foreground h-[24px] w-[24px]" />
           </button>
         </div>
       </header>
