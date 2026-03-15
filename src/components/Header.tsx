@@ -1,9 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
 import { Search, Command, User } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import SearchModal from "./SearchModal";
 import ProfileDrawer from "./ProfileDrawer";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [searchOpen, setSearchOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [scrollOpacity, setScrollOpacity] = useState(0);
@@ -46,7 +48,7 @@ const Header = () => {
           boxShadow: scrollOpacity > 0.8 ? `0 1px 3px hsl(var(--foreground) / 0.05)` : "none",
         }}
       >
-        <div className="flex items-center gap-2">
+        <button onClick={() => navigate("/")} className="flex items-center gap-2 cursor-pointer bg-transparent border-none p-0">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-primary">
             <path d="M12 2L2 12l4 4 6-6 6 6 4-4L12 2z" fill="currentColor" />
             <path d="M6 16l6 6 6-6" stroke="currentColor" strokeWidth="2" fill="none" />
@@ -55,7 +57,7 @@ const Header = () => {
           <span className="px-2 py-0.5 text-[10px] font-bold uppercase rounded bg-primary text-primary-foreground">
             Alpha
           </span>
-        </div>
+        </button>
         <div className="flex items-center gap-2">
           <button onClick={() => setSearchOpen(true)} className="p-2 rounded-lg hover:bg-secondary transition-colors">
             <Search className="w-5 h-5 text-muted-foreground" />
