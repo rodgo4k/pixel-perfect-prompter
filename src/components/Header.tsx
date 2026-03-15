@@ -7,6 +7,15 @@ const Header = () => {
   const [searchOpen, setSearchOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [scrollOpacity, setScrollOpacity] = useState(0);
+  const [animating, setAnimating] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAnimating(false);
+      requestAnimationFrame(() => setAnimating(true));
+    }, 10000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
