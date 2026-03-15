@@ -45,15 +45,15 @@ const Header = () => {
         className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-3 transition-shadow duration-300"
         style={{
           backgroundColor: `hsl(var(--background) / ${scrollOpacity})`,
-          boxShadow: scrollOpacity > 0.8 ? `0 1px 3px hsl(var(--foreground) / 0.05)` : "none",
-        }}
-      >
+          boxShadow: scrollOpacity > 0.8 ? `0 1px 3px hsl(var(--foreground) / 0.05)` : "none"
+        }}>
+        
         <button onClick={() => navigate("/")} className="flex items-center gap-2 cursor-pointer bg-transparent border-none p-0">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-primary">
             <path d="M12 2L2 12l4 4 6-6 6 6 4-4L12 2z" fill="currentColor" />
             <path d="M6 16l6 6 6-6" stroke="currentColor" strokeWidth="2" fill="none" />
           </svg>
-          <span className={`text-lg font-bold text-foreground ${animating ? 'animate__animated animate__rubberBand' : ''}`}>Taiyō</span>
+          <span className={`text-lg font-bold text-foreground ${animating ? 'animate__animated animate__rubberBand' : ''}`}>​Aura   </span>
           <span className="px-2 py-0.5 text-[10px] font-bold uppercase rounded bg-primary text-primary-foreground">
             Alpha
           </span>
@@ -64,8 +64,8 @@ const Header = () => {
           </button>
           <button
             onClick={() => setSearchOpen(true)}
-            className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-secondary text-muted-foreground text-sm hover:bg-muted transition-colors"
-          >
+            className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-secondary text-muted-foreground text-sm hover:bg-muted transition-colors">
+            
             <Command className="w-3.5 h-3.5" />
             <span className="text-xs">K</span>
           </button>
@@ -76,8 +76,8 @@ const Header = () => {
       </header>
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
       <ProfileDrawer open={profileOpen} onClose={() => setProfileOpen(false)} />
-    </>
-  );
+    </>);
+
 };
 
 export default Header;
