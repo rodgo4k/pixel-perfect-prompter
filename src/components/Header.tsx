@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { User, Send, Sparkles } from "lucide-react";
+import { User, Send } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import ProfileDrawer from "./ProfileDrawer";
 import SearchModal from "./SearchModal";
