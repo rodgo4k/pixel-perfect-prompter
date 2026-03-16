@@ -74,10 +74,10 @@ const HeroBanner = () => {
           <img
             src={manga.cover}
             alt={manga.title}
-            width={144}
-            height={208}
+            width={230}
+            height={318}
             fetchPriority="high"
-            className="w-28 sm:w-36 h-40 sm:h-52 object-cover rounded-lg shadow-lg" />
+            className="w-[230px] h-[318px] object-cover rounded-lg shadow-lg" />
           
         </Link>
         <div className="flex-1 min-w-0 pt-1 sm:pt-2">
