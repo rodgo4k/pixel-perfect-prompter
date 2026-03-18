@@ -43,9 +43,9 @@ const Header = () => {
             <path d="M6 16l6 6 6-6" stroke="currentColor" strokeWidth="2" fill="none" />
           </svg>
           <span className={`text-lg font-bold text-foreground ${animating ? 'animate__animated animate__rubberBand' : ''}`}>Aura            </span>
-          <span className="px-2 py-0.5 text-[10px] uppercase rounded bg-primary text-primary-foreground font-extrabold">
-            マンガ
-          </span>
+          
+
+          
         </button>
 
         {/* Search Bar */}
