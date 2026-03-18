@@ -42,7 +42,7 @@ const Header = () => {
             <path d="M12 2L2 12l4 4 6-6 6 6 4-4L12 2z" fill="currentColor" />
             <path d="M6 16l6 6 6-6" stroke="currentColor" strokeWidth="2" fill="none" />
           </svg>
-          <span className={`text-lg font-bold text-foreground ${animating ? 'animate__animated animate__rubberBand' : ''}`}>​KuroCat   </span>
+          <span className={`text-lg font-bold text-foreground ${animating ? 'animate__animated animate__rubberBand' : ''}`}>Onigiri            </span>
           <span className="px-2 py-0.5 text-[10px] uppercase rounded bg-primary text-primary-foreground font-extrabold">
             マンガ
           </span>
