@@ -30,16 +30,16 @@
     --surface-dark: 0 0% 93%;
     --surface-elevated: 0 0% 96%;
     --text-secondary: 0 0% 45%;
-    --badge-alpha: 0 72% 51%;
+    --badge-alpha: 270 42% 50%;
 
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 0 0% 0%;
-    --sidebar-primary: 0 72% 51%;
+    --sidebar-primary: 270 42% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 93%;
     --sidebar-accent-foreground: 0 0% 0%;
     --sidebar-border: 0 0% 87%;
-    --sidebar-ring: 0 72% 51%;
+    --sidebar-ring: 270 42% 50%;
   }
 
   .dark {
