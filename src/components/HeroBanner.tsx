@@ -57,9 +57,9 @@ const HeroBanner = () => {
           width={503}
           height={700}
           fetchPriority="high"
-          className="w-full h-full object-cover scale-110 blur-xl" />
+           className="w-full h-full object-cover scale-110 blur-2xl" />
         
-        <div className="absolute inset-0 bg-background/70" />
+        <div className="absolute inset-0 bg-background/60" />
       </div>
 
       {/* Spacer for fixed header */}
