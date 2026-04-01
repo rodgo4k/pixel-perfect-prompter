@@ -12,19 +12,19 @@
     --card-foreground: 0 0% 0%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 0%;
-    --primary: 0 72% 51%;
+    --primary: 270 42% 50%;
     --primary-foreground: 0 0% 100%;
     --secondary: 0 0% 93%;
     --secondary-foreground: 0 0% 20%;
     --muted: 0 0% 92%;
     --muted-foreground: 0 0% 45%;
-    --accent: 0 72% 51%;
+    --accent: 270 42% 50%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
     --border: 0 0% 87%;
     --input: 0 0% 87%;
-    --ring: 0 72% 51%;
+    --ring: 270 42% 50%;
     --radius: 0.5rem;
 
     --surface-dark: 0 0% 93%;
