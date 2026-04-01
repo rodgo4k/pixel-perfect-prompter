@@ -29,7 +29,7 @@ const ProfileDrawer = ({ open, onClose }: ProfileDrawerProps) => {
     <div className="fixed inset-0 z-50" onClick={onClose}>
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" />
       <div
-        className="fixed top-0 right-0 h-full w-80 bg-card border-l border-border shadow-2xl animate-slide-in-right flex flex-col"
+        className="fixed top-0 right-0 w-[268px] h-[394px] bg-card border-l border-border shadow-2xl animate-slide-in-right flex flex-col rounded-bl-lg"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
