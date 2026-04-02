@@ -126,10 +126,10 @@ const ProfileDrawer = ({ open, onClose }: ProfileDrawerProps) => {
         ) : (
           /* Guest menu */
           <div className="flex-1 flex flex-col gap-2 p-4 justify-center">
-            <button
-              onClick={handleLogin}
-              className="flex items-center justify-center gap-2 w-full py-3 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors"
-            >
+              <button
+                onClick={handleLogin}
+                className="flex items-center justify-center gap-2 w-full py-3 rounded-lg bg-foreground/10 text-foreground text-sm font-semibold hover:shadow-[0_0_12px_rgba(255,255,255,0.2)] transition-all"
+              >
               <User className="w-4 h-4" />
               Login
             </button>

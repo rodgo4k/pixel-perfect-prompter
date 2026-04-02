@@ -117,7 +117,7 @@ const Profile = () => {
             className="w-full h-full object-cover filter blur-[2px]"
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(270,60%,30%)]" />
+          <div className="w-full h-full bg-gradient-to-r from-muted to-secondary" />
         )}
         <div className="absolute inset-0 bg-black/30" />
         
