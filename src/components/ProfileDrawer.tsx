@@ -67,7 +67,7 @@ const ProfileDrawer = ({ open, onClose }: ProfileDrawerProps) => {
                 {avatarUrl ? (
                   <AvatarImage src={avatarUrl} alt="Avatar" />
                 ) : null}
-                <AvatarFallback className="bg-primary/20 text-primary text-sm font-semibold">
+                <AvatarFallback className="bg-muted text-foreground text-sm font-semibold">
                   {(user.user_metadata?.display_name || user.email || "U").charAt(0).toUpperCase()}
                 </AvatarFallback>
               </Avatar>
