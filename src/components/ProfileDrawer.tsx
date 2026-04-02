@@ -2,6 +2,9 @@ import { X, User, Settings, BookOpen, Moon, Sun, LogOut } from "lucide-react";
 import { useTheme } from "@/hooks/use-theme";
 import { useAuth } from "@/hooks/use-auth";
 import { useNavigate } from "react-router-dom";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface ProfileDrawerProps {
   open: boolean;
@@ -12,6 +15,20 @@ const ProfileDrawer = ({ open, onClose }: ProfileDrawerProps) => {
   const { theme, toggleTheme } = useTheme();
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (user) {
+      supabase
+        .from("profiles")
+        .select("avatar_url")
+        .eq("user_id", user.id)
+        .maybeSingle()
+        .then(({ data }) => {
+          if (data?.avatar_url) setAvatarUrl(data.avatar_url);
+        });
+    }
+  }, [user]);
 
   if (!open) return null;
 
@@ -46,9 +63,14 @@ const ProfileDrawer = ({ open, onClose }: ProfileDrawerProps) => {
           <>
             {/* User info */}
             <div className="px-4 py-3 border-b border-border flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center">
-                <User className="w-4 h-4 text-primary" />
-              </div>
+              <Avatar className="w-10 h-10">
+                {avatarUrl ? (
+                  <AvatarImage src={avatarUrl} alt="Avatar" />
+                ) : null}
+                <AvatarFallback className="bg-primary/20 text-primary text-sm font-semibold">
+                  {(user.user_metadata?.display_name || user.email || "U").charAt(0).toUpperCase()}
+                </AvatarFallback>
+              </Avatar>
               <div className="min-w-0">
                 <p className="text-sm font-medium text-foreground truncate">
                   {user.user_metadata?.display_name || user.email?.split("@")[0]}
