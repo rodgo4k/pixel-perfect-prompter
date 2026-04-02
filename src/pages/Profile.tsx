@@ -87,7 +87,7 @@ const Profile = () => {
         <div className="flex flex-col items-center justify-center gap-4 py-32">
           <button
             onClick={() => navigate("/auth")}
-            className="flex items-center justify-center gap-2 w-64 py-3 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors"
+            className="flex items-center justify-center gap-2 w-64 py-3 rounded-lg bg-foreground/10 text-foreground text-sm font-semibold hover:shadow-[0_0_12px_rgba(255,255,255,0.2)] transition-all"
           >
             <User className="w-4 h-4" />
             Login
@@ -117,7 +117,7 @@ const Profile = () => {
             className="w-full h-full object-cover filter blur-[2px]"
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(270,60%,30%)]" />
+          <div className="w-full h-full bg-gradient-to-r from-muted to-secondary" />
         )}
         <div className="absolute inset-0 bg-black/30" />
         

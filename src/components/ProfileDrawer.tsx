@@ -67,7 +67,7 @@ const ProfileDrawer = ({ open, onClose }: ProfileDrawerProps) => {
                 {avatarUrl ? (
                   <AvatarImage src={avatarUrl} alt="Avatar" />
                 ) : null}
-                <AvatarFallback className="bg-primary/20 text-primary text-sm font-semibold">
+                <AvatarFallback className="bg-muted text-foreground text-sm font-semibold">
                   {(user.user_metadata?.display_name || user.email || "U").charAt(0).toUpperCase()}
                 </AvatarFallback>
               </Avatar>
@@ -83,16 +83,16 @@ const ProfileDrawer = ({ open, onClose }: ProfileDrawerProps) => {
             <div className="flex-1 flex flex-col gap-1 p-3">
               <button
                 onClick={() => { onClose(); navigate("/profile"); }}
-                className="flex items-center gap-3 w-full px-3 py-2.5 text-sm text-foreground hover:bg-secondary/50 rounded-lg transition-colors"
+                className="flex items-center gap-3 w-full px-3 py-2.5 text-sm text-foreground hover:text-foreground/80 hover:shadow-[0_0_8px_rgba(255,255,255,0.15)] rounded-lg transition-all"
               >
                 <User className="w-[18px] h-[18px] text-muted-foreground" />
                 Meu Perfil
               </button>
-              <button className="flex items-center gap-3 w-full px-3 py-2.5 text-sm text-foreground hover:bg-secondary/50 rounded-lg transition-colors">
+              <button className="flex items-center gap-3 w-full px-3 py-2.5 text-sm text-foreground hover:text-foreground/80 hover:shadow-[0_0_8px_rgba(255,255,255,0.15)] rounded-lg transition-all">
                 <Settings className="w-[18px] h-[18px] text-muted-foreground" />
                 Configurações
               </button>
-              <button className="flex items-center gap-3 w-full px-3 py-2.5 text-sm text-foreground hover:bg-secondary/50 rounded-lg transition-colors">
+              <button className="flex items-center gap-3 w-full px-3 py-2.5 text-sm text-foreground hover:text-foreground/80 hover:shadow-[0_0_8px_rgba(255,255,255,0.15)] rounded-lg transition-all">
                 <BookOpen className="w-[18px] h-[18px] text-muted-foreground" />
                 Minhas Scans
               </button>
@@ -126,10 +126,10 @@ const ProfileDrawer = ({ open, onClose }: ProfileDrawerProps) => {
         ) : (
           /* Guest menu */
           <div className="flex-1 flex flex-col gap-2 p-4 justify-center">
-            <button
-              onClick={handleLogin}
-              className="flex items-center justify-center gap-2 w-full py-3 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors"
-            >
+              <button
+                onClick={handleLogin}
+                className="flex items-center justify-center gap-2 w-full py-3 rounded-lg bg-foreground/10 text-foreground text-sm font-semibold hover:shadow-[0_0_12px_rgba(255,255,255,0.2)] transition-all"
+              >
               <User className="w-4 h-4" />
               Login
             </button>
