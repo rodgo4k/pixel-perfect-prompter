@@ -10,6 +10,7 @@ import { AuthProvider } from "@/hooks/use-auth";
 const Index = lazy(() => import("./pages/Index.tsx"));
 const MangaDetail = lazy(() => import("./pages/MangaDetail.tsx"));
 const Auth = lazy(() => import("./pages/Auth.tsx"));
+const Profile = lazy(() => import("./pages/Profile.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
 const queryClient = new QueryClient();
