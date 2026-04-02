@@ -28,6 +28,7 @@ const App = () => (
                 <Route path="/" element={<Index />} />
                 <Route path="/manga/:slug" element={<MangaDetail />} />
                 <Route path="/auth" element={<Auth />} />
+                <Route path="/profile" element={<Profile />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
