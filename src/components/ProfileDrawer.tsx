@@ -63,9 +63,14 @@ const ProfileDrawer = ({ open, onClose }: ProfileDrawerProps) => {
           <>
             {/* User info */}
             <div className="px-4 py-3 border-b border-border flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center">
-                <User className="w-4 h-4 text-primary" />
-              </div>
+              <Avatar className="w-10 h-10">
+                {avatarUrl ? (
+                  <AvatarImage src={avatarUrl} alt="Avatar" />
+                ) : null}
+                <AvatarFallback className="bg-primary/20 text-primary text-sm font-semibold">
+                  {(user.user_metadata?.display_name || user.email || "U").charAt(0).toUpperCase()}
+                </AvatarFallback>
+              </Avatar>
               <div className="min-w-0">
                 <p className="text-sm font-medium text-foreground truncate">
                   {user.user_metadata?.display_name || user.email?.split("@")[0]}
