@@ -227,6 +227,9 @@ const MangaDetail = () => {
           </div>
         )}
       </div>
+
+      {/* Comments section */}
+      {dbMangaId && <MangaComments mangaId={dbMangaId} />}
     </div>
   );
 };
