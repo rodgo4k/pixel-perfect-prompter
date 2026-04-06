@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Eye, Users, Clock, ChevronDown, ChevronUp } from "lucide-react";
 import Header from "@/components/Header";
 import { getMangaBySlug } from "@/data/mangas";
+import { supabase } from "@/integrations/supabase/client";
+import MangaComments from "@/components/MangaComments";
 
 const CHAPTERS_PER_PAGE = 30;
 
