@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Eye, Users, Clock, ChevronDown, ChevronUp } from "lucide-react";
 import Header from "@/components/Header";
 import { getMangaBySlug } from "@/data/mangas";
+import { supabase } from "@/integrations/supabase/client";
+import MangaComments from "@/components/MangaComments";
 
 const CHAPTERS_PER_PAGE = 30;
 
@@ -12,6 +14,19 @@ const MangaDetail = () => {
   const [volumeOpen, setVolumeOpen] = useState(true);
   const [chaptersCollapsed, setChaptersCollapsed] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [dbMangaId, setDbMangaId] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!slug) return;
+    supabase
+      .from("mangas")
+      .select("id")
+      .eq("slug", slug)
+      .single()
+      .then(({ data }) => {
+        if (data) setDbMangaId(data.id);
+      });
+  }, [slug]);
 
   if (!manga) {
     return (
@@ -212,6 +227,9 @@ const MangaDetail = () => {
           </div>
         )}
       </div>
+
+      {/* Comments section */}
+      {dbMangaId && <MangaComments mangaId={dbMangaId} />}
     </div>
   );
 };
