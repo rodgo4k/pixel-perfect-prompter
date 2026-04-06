@@ -14,6 +14,19 @@ const MangaDetail = () => {
   const [volumeOpen, setVolumeOpen] = useState(true);
   const [chaptersCollapsed, setChaptersCollapsed] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [dbMangaId, setDbMangaId] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!slug) return;
+    supabase
+      .from("mangas")
+      .select("id")
+      .eq("slug", slug)
+      .single()
+      .then(({ data }) => {
+        if (data) setDbMangaId(data.id);
+      });
+  }, [slug]);
 
   if (!manga) {
     return (
