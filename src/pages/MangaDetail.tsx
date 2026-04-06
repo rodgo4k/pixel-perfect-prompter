@@ -4,13 +4,11 @@ import { Eye, Users, Clock, ChevronDown, ChevronUp } from "lucide-react";
 import Header from "@/components/Header";
 import { getMangaBySlug } from "@/data/mangas";
 
-const TABS = ["Informações", "Capítulos", "Personagens", "Relações", "Covers", "Banners"];
 const CHAPTERS_PER_PAGE = 30;
 
 const MangaDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const manga = getMangaBySlug(slug || "");
-  const [activeTab, setActiveTab] = useState("Capítulos");
   const [volumeOpen, setVolumeOpen] = useState(true);
   const [chaptersCollapsed, setChaptersCollapsed] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -21,7 +19,7 @@ const MangaDetail = () => {
         <Header />
         <div className="max-w-6xl mx-auto px-6 py-20 text-center">
           <p className="text-xl text-muted-foreground">Mangá não encontrado.</p>
-          <Link to="/" className="text-primary hover:underline mt-4 inline-block">
+          <Link to="/" className="text-foreground hover:underline mt-4 inline-block">
             Voltar à página inicial
           </Link>
         </div>
@@ -47,208 +45,184 @@ const MangaDetail = () => {
             alt=""
             className="w-full h-full object-cover scale-110 blur-xl"
           />
-          <div className="absolute inset-0 bg-background/70" />
+          <div className="absolute inset-0 bg-background/60" />
         </div>
 
         <div className="h-12" />
 
-        <div className="relative mx-auto px-4 sm:px-6 py-6 sm:py-10" style={{ maxWidth: 1237, minHeight: 410 }}>
-          <div className="flex flex-col sm:flex-row gap-5 sm:gap-8">
-            {/* Cover */}
+        <div className="relative max-w-[1500px] mx-auto px-4 sm:px-8 lg:px-12 py-8 sm:py-12">
+          <div className="flex flex-col sm:flex-row gap-6 sm:gap-10">
+            {/* Cover - taller like reference */}
             <div className="relative flex-shrink-0 self-start">
               <img
                 src={manga.cover}
                 alt={manga.title}
-                className="w-32 sm:w-44 h-48 sm:h-64 object-cover rounded-lg shadow-xl"
+                className="w-[200px] sm:w-[220px] h-[300px] sm:h-[340px] object-cover rounded-lg shadow-xl"
               />
-              {/* Rating badge */}
-              <span className="absolute top-2 left-2 px-1.5 py-0.5 text-[10px] font-bold rounded bg-primary text-primary-foreground">
-                R16
-              </span>
             </div>
 
             {/* Info */}
-            <div className="flex-1 min-w-0 pt-0 sm:pt-2">
-              <h1 className="text-2xl sm:text-4xl font-extrabold text-foreground mb-3">
+            <div className="flex-1 min-w-0 pt-0 sm:pt-1">
+              <h1 className="text-3xl sm:text-[40px] font-bold text-foreground mb-4 leading-tight">
                 {manga.title}
               </h1>
 
-              <button className="mb-4 px-4 py-2 rounded-md bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors">
+              <button className="mb-5 px-5 py-2.5 rounded-md bg-destructive text-destructive-foreground text-sm font-semibold hover:bg-destructive/90 transition-colors">
                 Adicionar à biblioteca
               </button>
 
-              <p className="text-xs sm:text-sm leading-relaxed text-secondary-foreground opacity-80 whitespace-pre-line">
+              <p className="text-sm leading-relaxed text-foreground/80 mb-6 max-w-[900px]">
                 {manga.description}
               </p>
+
+              {/* Info fields - bordered label style */}
+              <div className="flex flex-wrap gap-x-8 gap-y-2 mb-2">
+                <InfoField label="Autor" value={manga.author} />
+                <InfoField label="Artista" value={manga.artist} />
+              </div>
+              <div className="flex flex-wrap gap-x-8 gap-y-2 mb-2">
+                <InfoField label="Status" value={manga.status} />
+                <InfoField label="Tipo" value={manga.demographic} />
+              </div>
+              <div className="flex flex-wrap gap-x-8 gap-y-2 mb-5">
+                <InfoField label="Visualizações" value="0" />
+              </div>
+
+              {/* Genre tags - outlined pills */}
+              <div className="flex flex-wrap gap-2">
+                {manga.genres.map((g) => (
+                  <span
+                    key={g}
+                    className="px-3 py-1 text-xs font-medium rounded-full border border-border text-foreground/90 hover:bg-secondary/50 transition-colors"
+                  >
+                    {g}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Tab bar */}
-      <div className="border-b border-border">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <nav className="flex gap-0 overflow-x-auto scrollbar-hide">
-            {TABS.map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors border-b-2 ${
-                  activeTab === tab
-                    ? "text-primary border-primary"
-                    : "text-muted-foreground border-transparent hover:text-foreground"
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
-          </nav>
-        </div>
+      {/* Separator */}
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-8 lg:px-12">
+        <div className="border-t border-border" />
       </div>
 
-      {/* Content */}
-      {activeTab === "Capítulos" && (
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6">
-          {/* Collapse toggle */}
-          <div className="flex justify-end mb-3">
-            <button
-              onClick={() => setChaptersCollapsed((v) => !v)}
-              className="px-3 py-1.5 text-xs font-medium rounded border border-border text-foreground hover:bg-secondary transition-colors"
-            >
-              {chaptersCollapsed ? "Expandir" : "Recolher"}
-            </button>
-          </div>
+      {/* Chapters section */}
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-8 lg:px-12 py-6">
+        {/* Collapse toggle */}
+        <div className="flex justify-end mb-4">
+          <button
+            onClick={() => setChaptersCollapsed((v) => !v)}
+            className="px-4 py-1.5 text-xs font-medium rounded border border-border text-foreground hover:bg-secondary transition-colors"
+          >
+            {chaptersCollapsed ? "Expandir" : "Recolher"}
+          </button>
+        </div>
 
-          {/* Volume accordion */}
-          <div className="rounded-lg border border-border overflow-hidden bg-card">
-            <button
-              onClick={() => setVolumeOpen((v) => !v)}
-              className="w-full flex items-center justify-between px-4 py-3 hover:bg-secondary/50 transition-colors"
-            >
-              <span className="text-sm font-medium text-foreground">Volume 0</span>
-              {volumeOpen ? (
-                <ChevronUp className="w-4 h-4 text-muted-foreground" />
-              ) : (
-                <ChevronDown className="w-4 h-4 text-muted-foreground" />
-              )}
-            </button>
+        {/* Volume accordion */}
+        <div className="rounded-lg overflow-hidden">
+          <button
+            onClick={() => setVolumeOpen((v) => !v)}
+            className="w-full flex items-center justify-between py-3 hover:opacity-80 transition-opacity"
+          >
+            <span className="text-sm font-semibold text-foreground">Sem volume</span>
+            {volumeOpen ? (
+              <ChevronUp className="w-4 h-4 text-muted-foreground" />
+            ) : (
+              <ChevronDown className="w-4 h-4 text-muted-foreground" />
+            )}
+          </button>
 
-            {volumeOpen && !chaptersCollapsed && (
-              <div>
-                {paginatedChapters.map((ch) => (
-                  <div key={ch.number}>
-                    {/* Chapter header label */}
-                    <div className="px-4 pt-4 pb-1">
-                      <span className="text-xs font-semibold text-foreground">
-                        Capítulo {ch.number}
+          {volumeOpen && !chaptersCollapsed && (
+            <div>
+              {paginatedChapters.map((ch) => (
+                <div key={ch.number}>
+                  {/* Chapter header label */}
+                  <div className="pt-4 pb-1">
+                    <span className="text-xs font-bold text-foreground">
+                      Capítulo {ch.number}
+                    </span>
+                  </div>
+                  {/* Chapter row */}
+                  <div className="flex items-start gap-3 py-2 hover:bg-secondary/30 transition-colors cursor-pointer border-t border-border/30">
+                    {/* Tree line indicator */}
+                    <div className="flex items-center gap-2 mt-0.5 text-muted-foreground flex-shrink-0">
+                      <span className="text-xs opacity-50">└</span>
+                    </div>
+
+                    {/* Left border accent */}
+                    <div className="w-0.5 self-stretch bg-destructive/60 rounded-full flex-shrink-0" />
+
+                    {/* Chapter info */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-1.5">
+                        <Eye className="w-3.5 h-3.5 text-muted-foreground flex-shrink-0" />
+                        <span className="text-sm font-medium text-foreground">
+                          Capítulo {ch.number} — {ch.title}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-1.5 mt-0.5">
+                        <Users className="w-3 h-3 text-muted-foreground flex-shrink-0" />
+                        <span className="text-xs text-muted-foreground">{ch.group}</span>
+                      </div>
+                    </div>
+
+                    {/* Right side: date + uploader */}
+                    <div className="flex flex-col items-end gap-0.5 flex-shrink-0">
+                      <span className="text-xs text-muted-foreground flex items-center gap-1">
+                        <Clock className="w-3 h-3" />
+                        {ch.date}
+                      </span>
+                      <span className="text-xs text-muted-foreground flex items-center gap-1">
+                        <Users className="w-3 h-3" />
+                        uploader
                       </span>
                     </div>
-                    {/* Chapter row */}
-                    <div className="flex items-start gap-3 px-4 py-2 hover:bg-secondary/30 transition-colors cursor-pointer border-t border-border/50">
-                      {/* Tree line indicator */}
-                      <div className="flex items-center gap-2 mt-0.5 text-muted-foreground flex-shrink-0">
-                        <span className="text-xs opacity-50">└</span>
-                      </div>
-
-                      {/* Chapter info */}
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-1.5">
-                          <Eye className="w-3.5 h-3.5 text-muted-foreground flex-shrink-0" />
-                          <span className="text-sm font-medium text-foreground">
-                            Capítulo {ch.number}
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-1.5 mt-0.5">
-                          <Users className="w-3 h-3 text-muted-foreground flex-shrink-0" />
-                          <span className="text-xs text-muted-foreground">{ch.group}</span>
-                        </div>
-                      </div>
-
-                      {/* Right side: date + uploader */}
-                      <div className="flex flex-col items-end gap-0.5 flex-shrink-0">
-                        <span className="text-xs text-muted-foreground flex items-center gap-1">
-                          <Clock className="w-3 h-3" />
-                          {ch.date}
-                        </span>
-                        <span className="text-xs text-muted-foreground flex items-center gap-1">
-                          <Users className="w-3 h-3" />
-                          uploader
-                        </span>
-                      </div>
-                    </div>
                   </div>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Pagination */}
-          {totalPages > 1 && (
-            <div className="flex items-center justify-end gap-2 mt-6">
-              <select
-                defaultValue={CHAPTERS_PER_PAGE}
-                className="px-2 py-1 text-xs rounded border border-border bg-card text-foreground"
-              >
-                <option value={30}>30</option>
-              </select>
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                <button
-                  key={page}
-                  onClick={() => setCurrentPage(page)}
-                  className={`w-7 h-7 text-xs rounded flex items-center justify-center transition-colors ${
-                    currentPage === page
-                      ? "bg-primary text-primary-foreground"
-                      : "border border-border text-foreground hover:bg-secondary"
-                  }`}
-                >
-                  {page}
-                </button>
+                </div>
               ))}
             </div>
           )}
         </div>
-      )}
 
-      {activeTab === "Informações" && (
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
-            <div>
-              <p className="text-xs text-muted-foreground mb-0.5">Autor</p>
-              <p className="text-sm font-medium text-foreground">{manga.author}</p>
-            </div>
-            <div>
-              <p className="text-xs text-muted-foreground mb-0.5">Artista</p>
-              <p className="text-sm font-medium text-foreground">{manga.artist}</p>
-            </div>
-            <div>
-              <p className="text-xs text-muted-foreground mb-0.5">Status</p>
-              <p className="text-sm font-medium text-foreground">{manga.status}</p>
-            </div>
-            <div>
-              <p className="text-xs text-muted-foreground mb-0.5">Demográfico</p>
-              <p className="text-sm font-medium text-foreground">{manga.demographic}</p>
-            </div>
-          </div>
-          <div className="flex flex-wrap gap-2 mt-6">
-            {manga.genres.map((g) => (
-              <span
-                key={g}
-                className="px-2.5 py-1 text-xs font-medium rounded-full bg-secondary text-secondary-foreground"
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex items-center justify-end gap-2 mt-6">
+            <select
+              defaultValue={CHAPTERS_PER_PAGE}
+              className="px-2 py-1 text-xs rounded border border-border bg-card text-foreground"
+            >
+              <option value={30}>30</option>
+            </select>
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                onClick={() => setCurrentPage(page)}
+                className={`w-7 h-7 text-xs rounded flex items-center justify-center transition-colors ${
+                  currentPage === page
+                    ? "bg-destructive text-destructive-foreground"
+                    : "border border-border text-foreground hover:bg-secondary"
+                }`}
               >
-                {g}
-              </span>
+                {page}
+              </button>
             ))}
           </div>
-        </div>
-      )}
-
-      {!["Capítulos", "Informações"].includes(activeTab) && (
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 text-center">
-          <p className="text-sm text-muted-foreground">Em breve.</p>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
+
+const InfoField = ({ label, value }: { label: string; value: string }) => (
+  <div className="flex items-center gap-2 text-sm">
+    <span className="text-muted-foreground">{label}:</span>
+    <span className="px-2 py-0.5 text-foreground border border-border/60 rounded text-sm">
+      {value}
+    </span>
+  </div>
+);
 
 export default MangaDetail;
