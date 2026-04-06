@@ -3,13 +3,48 @@ import { Search, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import ProfileDrawer from "./ProfileDrawer";
 import SearchModal from "./SearchModal";
+import { useAuth } from "@/hooks/use-auth";
+import { supabase } from "@/integrations/supabase/client";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const Header = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [profileOpen, setProfileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [scrollOpacity, setScrollOpacity] = useState(0);
   const [animating, setAnimating] = useState(true);
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+
+  // Fetch avatar
+  useEffect(() => {
+    if (!user) { setAvatarUrl(null); return; }
+    const fetchAvatar = async () => {
+      const { data } = await supabase
+        .from("profiles")
+        .select("avatar_url")
+        .eq("user_id", user.id)
+        .maybeSingle();
+      if (data?.avatar_url) setAvatarUrl(data.avatar_url);
+    };
+    fetchAvatar();
+
+    // Listen for realtime changes to update avatar instantly
+    const channel = supabase
+      .channel('header-avatar')
+      .on('postgres_changes', {
+        event: 'UPDATE',
+        schema: 'public',
+        table: 'profiles',
+        filter: `user_id=eq.${user.id}`,
+      }, (payload) => {
+        const newUrl = (payload.new as any)?.avatar_url;
+        if (newUrl) setAvatarUrl(newUrl);
+      })
+      .subscribe();
+
+    return () => { supabase.removeChannel(channel); };
+  }, [user]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -28,6 +63,10 @@ const Header = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const userInitial = user
+    ? (user.user_metadata?.display_name || user.email || "U").charAt(0).toUpperCase()
+    : "";
+
   return (
     <>
       <header
@@ -43,9 +82,6 @@ const Header = () => {
             <path d="M6 16l6 6 6-6" stroke="currentColor" strokeWidth="2" fill="none" />
           </svg>
           <span className={`text-lg font-bold text-foreground ${animating ? 'animate__animated animate__rubberBand' : ''}`}>Aura            </span>
-          
-
-          
         </button>
 
         {/* Search Bar */}
@@ -58,7 +94,6 @@ const Header = () => {
             <span className="text-sm text-muted-foreground flex-1 text-left">Pesquisar... </span>
             <div className="relative flex-shrink-0">
               <Search className="text-muted-foreground w-[17px] h-[17px]" />
-              
             </div>
           </div>
         </button>
@@ -69,15 +104,30 @@ const Header = () => {
               <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
             </svg>
           </button>
-          <button onClick={() => setProfileOpen(true)} className="p-2 rounded-lg hover:bg-secondary transition-colors px-[5px] py-[5px]">
-            <User className="text-muted-foreground h-[24px] w-[24px]" />
+          <button onClick={() => setProfileOpen(true)} className="p-1 rounded-full hover:bg-secondary transition-colors">
+            {user && avatarUrl ? (
+              <Avatar className="w-8 h-8">
+                <AvatarImage src={avatarUrl} alt="Avatar" className="object-cover" />
+                <AvatarFallback className="bg-muted text-foreground text-xs font-semibold">
+                  {userInitial}
+                </AvatarFallback>
+              </Avatar>
+            ) : user ? (
+              <Avatar className="w-8 h-8">
+                <AvatarFallback className="bg-muted text-foreground text-xs font-semibold">
+                  {userInitial}
+                </AvatarFallback>
+              </Avatar>
+            ) : (
+              <User className="text-muted-foreground h-[24px] w-[24px]" />
+            )}
           </button>
         </div>
       </header>
       <ProfileDrawer open={profileOpen} onClose={() => setProfileOpen(false)} />
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
-    </>);
-
+    </>
+  );
 };
 
 export default Header;
