@@ -121,13 +121,16 @@ const Profile = () => {
         )}
         <div className="absolute inset-0 bg-black/30" />
         
-        {/* Banner edit button */}
+        {/* Banner edit button - centered */}
         <button
           onClick={() => bannerInputRef.current?.click()}
-          className="absolute top-4 right-4 p-2 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/70"
+          className="absolute inset-0 flex items-center justify-center bg-black/0 hover:bg-black/30 text-white opacity-0 group-hover:opacity-100 transition-all"
           disabled={uploading}
         >
-          <Camera className="w-5 h-5" />
+          <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-black/60 backdrop-blur-sm">
+            <Camera className="w-5 h-5" />
+            <span className="text-sm font-medium">Alterar capa</span>
+          </div>
         </button>
         <input
           ref={bannerInputRef}
