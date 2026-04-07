@@ -135,7 +135,7 @@ const MangaComments = ({ mangaId }: { mangaId: string }) => {
               disabled={loading || !newComment.trim()}
               className="px-4 py-1.5 rounded-lg bg-secondary text-foreground text-sm font-medium hover:bg-secondary/80 transition-colors disabled:opacity-40"
             >
-              Send
+              Enviar
             </button>
           </div>
         </div>
