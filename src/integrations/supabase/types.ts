@@ -115,6 +115,7 @@ export type Database = {
           created_at: string
           id: string
           manga_id: string
+          parent_id: string | null
           user_id: string
         }
         Insert: {
@@ -122,6 +123,7 @@ export type Database = {
           created_at?: string
           id?: string
           manga_id: string
+          parent_id?: string | null
           user_id: string
         }
         Update: {
@@ -129,6 +131,7 @@ export type Database = {
           created_at?: string
           id?: string
           manga_id?: string
+          parent_id?: string | null
           user_id?: string
         }
         Relationships: [
@@ -137,6 +140,13 @@ export type Database = {
             columns: ["manga_id"]
             isOneToOne: false
             referencedRelation: "mangas"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "comments_parent_id_fkey"
+            columns: ["parent_id"]
+            isOneToOne: false
+            referencedRelation: "comments"
             referencedColumns: ["id"]
           },
         ]
