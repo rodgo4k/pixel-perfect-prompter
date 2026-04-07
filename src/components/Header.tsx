@@ -104,27 +104,33 @@ const Header = () => {
               <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
             </svg>
           </button>
-          <button onClick={() => setProfileOpen(true)} className="p-1 rounded-full hover:bg-secondary transition-colors">
-            {user && avatarUrl ? (
-              <Avatar className="w-8 h-8">
-                <AvatarImage src={avatarUrl} alt="Avatar" className="object-cover" />
-                <AvatarFallback className="bg-muted text-foreground text-xs font-semibold">
-                  {userInitial}
-                </AvatarFallback>
-              </Avatar>
-            ) : user ? (
-              <Avatar className="w-8 h-8">
-                <AvatarFallback className="bg-muted text-foreground text-xs font-semibold">
-                  {userInitial}
-                </AvatarFallback>
-              </Avatar>
-            ) : (
-              <User className="text-muted-foreground h-[24px] w-[24px]" />
-            )}
-          </button>
+          <div
+            className="relative"
+            onMouseEnter={() => setProfileOpen(true)}
+            onMouseLeave={() => setProfileOpen(false)}
+          >
+            <button className="p-1 rounded-full hover:bg-secondary transition-colors">
+              {user && avatarUrl ? (
+                <Avatar className="w-8 h-8">
+                  <AvatarImage src={avatarUrl} alt="Avatar" className="object-cover" />
+                  <AvatarFallback className="bg-muted text-foreground text-xs font-semibold">
+                    {userInitial}
+                  </AvatarFallback>
+                </Avatar>
+              ) : user ? (
+                <Avatar className="w-8 h-8">
+                  <AvatarFallback className="bg-muted text-foreground text-xs font-semibold">
+                    {userInitial}
+                  </AvatarFallback>
+                </Avatar>
+              ) : (
+                <User className="text-muted-foreground h-[24px] w-[24px]" />
+              )}
+            </button>
+            <ProfileDrawer open={profileOpen} onClose={() => setProfileOpen(false)} />
+          </div>
         </div>
       </header>
-      <ProfileDrawer open={profileOpen} onClose={() => setProfileOpen(false)} />
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );
