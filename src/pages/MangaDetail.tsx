@@ -17,26 +17,16 @@ const MangaDetail = () => {
   const [dbMangaId, setDbMangaId] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!slug || !manga) return;
-    const ensureManga = async () => {
-      const { data } = await supabase
-        .from("mangas")
-        .select("id")
-        .eq("slug", slug)
-        .single();
-      if (data) {
-        setDbMangaId(data.id);
-      } else {
-        const { data: inserted } = await supabase
-          .from("mangas")
-          .insert({ slug, title: manga.title })
-          .select("id")
-          .single();
-        if (inserted) setDbMangaId(inserted.id);
-      }
-    };
-    ensureManga();
-  }, [slug, manga]);
+    if (!slug) return;
+    supabase
+      .from("mangas")
+      .select("id")
+      .eq("slug", slug)
+      .maybeSingle()
+      .then(({ data }) => {
+        if (data) setDbMangaId(data.id);
+      });
+  }, [slug]);
 
   if (!manga) {
     return (
