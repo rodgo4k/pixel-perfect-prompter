@@ -7,11 +7,11 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-[1702px] bg-background">
       <Header />
       <HeroBanner />
       
-      <div className="max-w-6xl mx-auto px-6 py-8">
+      <div className="max-w-[1912px] mx-auto px-6 py-8">
         <div className="flex gap-8">
           <ReleasesSection />
           <div className="hidden lg:block sticky top-4 self-start">

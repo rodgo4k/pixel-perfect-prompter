@@ -3,7 +3,7 @@ import { Cherry } from "lucide-react";
 const Footer = () => {
   return (
     <footer className="mt-16 border-t border-border bg-background">
-      <div className="max-w-6xl mx-auto px-6 py-10">
+      <div className="max-w-[1912px] mx-auto px-6 py-10">
         <div className="flex flex-col md:flex-row gap-8 md:gap-16 justify-between">
           {/* Left: Brand + Social */}
           <div className="flex flex-col gap-4">
@@ -45,7 +45,7 @@ const Footer = () => {
 
       {/* Copyright */}
       <div className="border-t border-border">
-        <div className="max-w-6xl mx-auto px-6 py-4">
+        <div className="max-w-[1912px] mx-auto px-6 py-4">
           <p className="text-xs text-muted-foreground text-center">
             © {new Date().getFullYear()} Aura Mangás. Todos os direitos reservados.
           </p>
